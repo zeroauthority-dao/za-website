@@ -44,7 +44,7 @@ export default function Nav() {
             Community
           </a>
         </Link>
-        <Link href="/coming-soon">
+        <Link href="https://docs.google.com/forms/d/1iu5TFc6an_GB9Wp4NgM-YCwSsSjJbtr4GON8yrsrTK4/edit">
           <a target='_blank' rel="noopener noreferrer" className="lg:inline-block lg:mt-0">
             Feedback
           </a>
