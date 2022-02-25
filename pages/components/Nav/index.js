@@ -50,6 +50,7 @@ export default function Nav() {
           </a>
         </Link>
         </div>
+
         <div className="flex mr-8 xl:mr-40">
           <div className="flex items-center px-4 py-2 leading-none border rounded-full bg-white text-black drop-shadow-lg border-white ml-10 lg:ml-0 lg:mt-0">
             <Image src="/../public/stx.png" alt="Stacks logo" height="24px" width="24px"/>
