@@ -39,7 +39,7 @@ export default function Nav() {
             Learn
           </a>
         </Link>
-        <Link href="/coming-soon">
+        <Link href="https://calendar.online/zeroauthority-reader">
           <a target='_blank' rel="noopener noreferrer" className="lg:inline-block lg:mt-0 mr-20 xl:mr-30">
             Community
           </a>
