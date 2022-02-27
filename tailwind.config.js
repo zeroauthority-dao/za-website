@@ -6,15 +6,15 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero': "url('../public/trianglify.png')"
+        hero: "url('../public/trianglify.png')",
       },
       borderRadius: {
-        'full': '99px'
-      }
+        full: "99px",
+      },
     },
     fontFamily: {
       inter: ["Inter", "sans-serif"],
-    }
+    },
   },
   plugins: [],
-}
+};
