@@ -4,7 +4,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        hero: "url('../public/trianglify.png')",
+      },
+      borderRadius: {
+        full: "99px",
+      },
+    },
+    fontFamily: {
+      inter: ["Inter", "sans-serif"],
+    },
   },
   plugins: [],
-}
+};
