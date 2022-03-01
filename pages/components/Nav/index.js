@@ -77,14 +77,14 @@ export default function Nav() {
         <div className="flex mt-4 md:mt-0">
           <div className="flex items-center px-4 py-2 leading-none border rounded-full bg-white text-black drop-shadow-lg border-white">
             <Image
-              src="/../public/stx.png"
+              src="/stx.png"
               alt="Stacks logo"
               height="24px"
               width="24px"
             />
             <span className="ml-1 mr-4">{stxPrice}</span>
             <Image
-              src="/../public/btc.png"
+              src="/btc.png"
               alt="Bitcoin logo"
               height="24px"
               width="24px"
