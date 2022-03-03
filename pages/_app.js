@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
     //  - This must be an exact match of your domain.
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load('JBWTRGCZ', {
-      includedDomains: ['Zeroauthority.xyz'],
+      includedDomains: ['zeroauthority.xyz'],
     });
 
     function onRouteChangeComplete() {
