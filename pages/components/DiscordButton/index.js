@@ -5,7 +5,7 @@ export default function DiscordButton() {
   return (
     <button
       onClick={()=>
-        window.open("https://discord.gg/sgU3txDcsV", "_blank", "noopener noreferrer")
+        window.open("https://discord.gg/TaaGrGKnsB", "_blank", "noopener noreferrer")
       }
       className="flex mt-6"
     >
