@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        'content': '1140px'
+      },
       backgroundImage: {
         hero: "url('../public/trianglify.png')",
       },

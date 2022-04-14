@@ -27,16 +27,7 @@ export default function Nav() {
   return (
     <nav className="flex items-center justify-between flex-wrap text-white mb-10 pt-20">
       <div className="w-full flex-grow flex items-center lg:w-auto flex-wrap justify-between">
-        <div className="font-medium text-sm md:text-lg md:text-md leading-7 tracking-wide lg:flex-grow uppercase flex gap-8 flex-wrap items-center">
-          <Link href="/coming-soon">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lg:inline-block lg:mt-0"
-            >
-              Join
-            </a>
-          </Link>
+        <div className="font-semibold text-sm md:text-xl leading-7 tracking-wide lg:flex-grow uppercase flex gap-8 flex-wrap items-center">
           <a
             href="https://zero-authority-dao.gitbook.io/internal-wiki/"
             target="_blank"
@@ -63,15 +54,6 @@ export default function Nav() {
               Community
             </a>
           </Link>
-          <Link href="https://docs.google.com/forms/d/1iu5TFc6an_GB9Wp4NgM-YCwSsSjJbtr4GON8yrsrTK4/edit">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lg:inline-block lg:mt-0"
-            >
-              Feedback
-            </a>
-          </Link>
         </div>
 
         <div className="flex mt-4 md:mt-0">
@@ -82,14 +64,14 @@ export default function Nav() {
               height="24px"
               width="24px"
             />
-            <span className="ml-1 mr-4">{stxPrice}</span>
+            <span className="ml-1 mr-4 md:font-semibold">{stxPrice}</span>
             <Image
               src="/btc.png"
               alt="Bitcoin logo"
               height="24px"
               width="24px"
             />
-            <span className="ml-1">{btcPrice}</span>
+            <span className="ml-1 md:font-semibold">{btcPrice}</span>
           </div>
         </div>
       </div>
