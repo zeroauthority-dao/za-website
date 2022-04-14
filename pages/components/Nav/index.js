@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { supabase } from "../../../utils/supabaseClient";
 
 export default function Nav() {
   const [stxPrice, setStxPrice] = useState();
   const [btcPrice, setBtcPrice] = useState();
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -73,6 +83,19 @@ export default function Nav() {
             />
             <span className="ml-1 md:font-semibold">{btcPrice}</span>
           </div>
+          {session ? (
+            <Link href="/profile">
+              <a className="ml-4 flex items-center px-4 py-2 leading-none border rounded-full bg-white text-black drop-shadow-lg border-white">
+                Edit Profile
+              </a>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <a className="ml-4 flex items-center px-4 py-2 leading-none border rounded-full bg-white text-black drop-shadow-lg border-white">
+                Creator Login
+              </a>
+            </Link>
+          )}
         </div>
       </div>
     </nav>
