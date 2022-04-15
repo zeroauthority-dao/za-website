@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../utils/supabaseClient";
 import { useRouter } from "next/router";
+import { supabase } from "../utils/supabaseClient";
+import Avatar from "./components/Avatar";
 
 export default function Profile() {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function Profile() {
 
       if (data) {
         setUsername(data.username);
-        setStxAddress(data.stxAddress);
+        setStxAddress(data.stx_address);
         setAvatarUrl(data.avatar_url);
         setDiscord(data.discord);
         setTwitter(data.twitter);
@@ -128,6 +129,20 @@ export default function Profile() {
           />
         </div>
       </div>
+      <Avatar
+        url={avatar_url}
+        size={150}
+        onUpload={(url) => {
+          setAvatarUrl(url);
+          updateProfile({
+            username,
+            stx_address: stxAddress,
+            twitter,
+            discord,
+            avatar_url: url,
+          });
+        }}
+      />
       <div>
         <label
           htmlFor="stxAddress"
