@@ -13,6 +13,8 @@ export default function Profile() {
   const [avatar_url, setAvatarUrl] = useState(null);
   const [discord, setDiscord] = useState(null);
   const [twitter, setTwitter] = useState(null);
+  const [services, setServices] = useState([]);
+  const [servicesChecked, setServicesChecked] = useState([]);
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -56,12 +58,32 @@ export default function Profile() {
     }
   }
 
+  useEffect(() => {
+    getServices();
+  }, []);
+
+  async function getServices() {
+    let { data: serviceList } = await supabase.from("services").select("*");
+    setServices(serviceList);
+
+    let { data: service_offerings } = await supabase
+      .from("service_offerings")
+      .select("*")
+      .eq("profile_id", supabase.auth.user().id);
+    service_offerings.forEach((offering) => {
+      setServicesChecked(
+        service_offerings.map((offering) => offering.service_id)
+      );
+    });
+  }
+
   async function updateProfile({
     username,
     stxAddress,
     avatar_url,
     discord,
     twitter,
+    servicesChecked,
   }) {
     try {
       setLoading(true);
@@ -80,6 +102,24 @@ export default function Profile() {
       let { error } = await supabase.from("profiles").upsert(updates, {
         returning: "minimal", // Don't return the value after inserting
       });
+      console.log(servicesChecked);
+      const serviceOfferings = servicesChecked.map((serviceId) => {
+        return {
+          profile_id: user.id,
+          service_id: serviceId,
+        };
+      });
+
+      const { data, deleteError } = await supabase
+        .from("service_offerings")
+        .delete()
+        .eq("profile_id", user.id);
+
+      let { servicesError } = await supabase
+        .from("service_offerings")
+        .insert(serviceOfferings, {
+          returning: "minimal",
+        });
 
       if (error) {
         throw error;
@@ -194,11 +234,52 @@ export default function Profile() {
           />
         </div>
       </div>
+      <fieldset>
+        <legend
+          htmlFor="services"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Services
+        </legend>
+        {services.map((service) => {
+          return (
+            <div key={service.id} className="flex flex-col gap-8">
+              <label htmlFor={service.id} className="">
+                <input
+                  id={service.id}
+                  name={service.name}
+                  type="checkbox"
+                  checked={servicesChecked.includes(service.id)}
+                  value={service.id}
+                  onChange={() => {
+                    if (servicesChecked.includes(service.id)) {
+                      setServicesChecked(
+                        servicesChecked.filter(
+                          (checkedService) => checkedService !== service.id
+                        )
+                      );
+                    } else {
+                      setServicesChecked([...servicesChecked, service.id]);
+                    }
+                  }}
+                />
+                <span className="pl-4">{service.name}</span>
+              </label>
+            </div>
+          );
+        })}
+      </fieldset>
       <div className="flex justify-between">
         <button
           className="bg-primary text-white px-4 py-2 rounded-lg shadow"
           onClick={() =>
-            updateProfile({ username, twitter, discord, stxAddress })
+            updateProfile({
+              username,
+              twitter,
+              discord,
+              stxAddress,
+              servicesChecked,
+            })
           }
           disabled={loading}
         >
