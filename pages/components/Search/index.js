@@ -2,7 +2,7 @@
 const Search = () => {
 
   return (
-  <div className="flex">
+  <div className="flex justify-center">
     <div className="mt-16 w-full max-w-content">
       <div className="flex items-stretch mb-4">
         <input

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import ContentButton from "./components/ContentButton";
 import Button from "./components/Button";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
