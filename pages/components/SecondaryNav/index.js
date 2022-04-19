@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Search from "../Search";
 
-export default function Nav() {
+export default function SecondaryNav() {
   const [stxPrice, setStxPrice] = useState();
   const [btcPrice, setBtcPrice] = useState();
 
@@ -25,9 +26,16 @@ export default function Nav() {
   });
 
   return (
-    <nav className="flex items-center justify-between flex-wrap text-white mb-10 pt-20">
-      <div className="w-full flex-grow flex items-center lg:w-auto flex-wrap justify-between">
-        <div className="font-semibold text-sm md:text-xl leading-7 tracking-wide lg:flex-grow uppercase flex gap-8 flex-wrap items-center">
+    <nav className="flex items-center justify-between flex-wrap bg-hero bg-cover bg-no-repeat text-white py-12 drop-shadow-xl">
+      <div className="w-full flex-grow flex lg:w-auto">
+        <div className="font-semibold text-sm md:text-xl leading-7 tracking-wide lg:flex-grow uppercase flex gap-32 flex-wrap items-center justify-center">
+        <Link href="/">
+            <a
+              className="lg:inline-block lg:mt-0"
+            >
+              Home
+            </a>
+          </Link>
           <a
             href="https://zero-authority-dao.gitbook.io/internal-wiki/"
             target="_blank"
@@ -54,26 +62,27 @@ export default function Nav() {
               Community
             </a>
           </Link>
-        </div>
-
-        <div className="flex mt-4 md:mt-0">
-          <div className="flex items-center px-4 py-2 leading-none border rounded-full bg-white text-black drop-shadow-lg border-white">
-            <Image
-              src="/stx.png"
-              alt="Stacks logo"
-              height="24px"
-              width="24px"
-            />
-            <span className="ml-1 mr-4 md:font-semibold">{stxPrice}</span>
-            <Image
-              src="/btc.png"
-              alt="Bitcoin logo"
-              height="24px"
-              width="24px"
-            />
-            <span className="ml-1 md:font-semibold">{btcPrice}</span>
+          <div className="flex mt-4 md:mt-0">
+            <div className="flex items-center px-4 py-2 leading-none border rounded-full bg-white text-black drop-shadow-lg border-white">
+              <Image
+                src="/stx.png"
+                alt="Stacks logo"
+                height="24px"
+                width="24px"
+              />
+              <span className="ml-1 mr-4 md:font-semibold">{stxPrice}</span>
+              <Image
+                src="/btc.png"
+                alt="Bitcoin logo"
+                height="24px"
+                width="24px"
+              />
+              <span className="ml-1 md:font-semibold">{btcPrice}</span>
+            </div>
           </div>
         </div>
+
+
       </div>
     </nav>
   );
