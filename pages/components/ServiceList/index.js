@@ -1,0 +1,30 @@
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { supabase } from "../../../utils/supabaseClient";
+
+export default function ServiceList() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    getServices();
+  }, []);
+
+  const getServices = async () => {
+    let { data: services, error } = await supabase.from("services").select("*");
+    setServices(services);
+  };
+
+  return (
+    <div className="flex flex-wrap gap-4 mt-4">
+      {services.map((service) => {
+        return (
+          <Link href={`results/${service.id}`} key={service.id}>
+            <a className="bg-primary p-4 rounded-lg text-white">
+              {service.name}
+            </a>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}

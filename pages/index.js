@@ -3,18 +3,18 @@ import Button from "./components/Button";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
+import ServiceList from "./components/ServiceList";
 
 export default function Home() {
-
   const provideData = {
     text: "Provide a Service",
-    path: "https://forms.gle/m7LQzcGtFefeTQzC9"
-  }
+    path: "https://forms.gle/m7LQzcGtFefeTQzC9",
+  };
 
   const lookingData = {
     text: "Looking for a Service",
-    path: "https://forms.gle/KXqNriutVt9f9gFm6"
-  }
+    path: "https://forms.gle/KXqNriutVt9f9gFm6",
+  };
 
   return (
     <>
@@ -39,40 +39,38 @@ export default function Home() {
           <div className="text-white leading-7 text-2xl mt-10 md:mt-10">
             <p>
               Zero Authority is a comunity of people who believe in open source
-              and permissionless systems built on Stacks and secured by Bitcoin
+              and permissionless systems built on Stacks and secured by Bitcoin.
             </p>
+            <p className="mt-4">What are you looking for?</p>
           </div>
-          <Search />
+          <ServiceList />
+          {/* <Search /> */}
         </div>
       </div>
 
       <div className="flex justify-center font-inter py-52 px-2 antialiased">
         <div className="grid grid-cols-2 gap-8 md:gap-20 max-w-content">
-         <div className="grid grid-rows-3 md:gap-8">
-          <div className="font-black text-2xl md:text-4xl">
-            Do you have a service to offer?
+          <div className="grid grid-rows-3 md:gap-8">
+            <div className="font-black text-2xl md:text-4xl">
+              Do you have a service to offer?
+            </div>
+            <div className="text-xl md:text-2xl row-span-2">
+              There is much to be done in the Stacks ecosystem, and we aim to
+              play a part in spreading reputable knowledge and bringing together
+              folks that are passionate about building for the future.
+            </div>
+            <Button buttonData={provideData} />
           </div>
-          <div className="text-xl md:text-2xl row-span-2">
-            There is much to be done in the Stacks ecosystem, and we aim to play a 
-            part in spreading reputable knowledge and bringing together folks
-            that are passionate about building for the future.
-          </div>
-            <Button
-              buttonData={provideData}
-            />
-          </div>
-         <div className="grid grid-rows-3">
-          <div className="font-black text-2xl md:text-4xl">
-            Are you looking for talent?
-          </div>
-          <div className="text-xl md:text-2xl row-span-2">
-            Are you looking for a talented individual to review your protocol's
-            smart contract? Do you need a meme master? Maybe someone to 
-            send retweets? Make tutorials? Write blogs?
-          </div>
-            <Button
-              buttonData={lookingData}
-            />
+          <div className="grid grid-rows-3">
+            <div className="font-black text-2xl md:text-4xl">
+              Are you looking for talent?
+            </div>
+            <div className="text-xl md:text-2xl row-span-2">
+              Are you looking for a talented individual to review your
+              protocol's smart contract? Do you need a meme master? Maybe
+              someone to send retweets? Make tutorials? Write blogs?
+            </div>
+            <Button buttonData={lookingData} />
           </div>
         </div>
       </div>
