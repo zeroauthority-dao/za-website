@@ -59,7 +59,9 @@ export default function Home() {
               play a part in spreading reputable knowledge and bringing together
               folks that are passionate about building for the future.
             </div>
-            <Button buttonData={provideData} />
+            {/* <Button buttonData={provideData} /> */}
+            {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+              <a className="button form" href="https://blocksurvey.io/survey/t/00ebf008-adb4-4f44-9d6a-0b22acdb82f7" target="_blank" rel="noreferrer">Provide a Service</a><blocksurvey-widget origin="blocksurvey.io" uid="t" sid="00ebf008-adb4-4f44-9d6a-0b22acdb82f7" mode="popupcard" alignpopup="left" popupsize="slide" background="rgb(229, 96, 115)" color="rgb(255, 255, 255)" params=""></blocksurvey-widget><script type="text/javascript" src= "https://blocksurvey.io/assets/js/blocksurvey-widget.js"></script>
           </div>
           <div className="grid grid-rows-3">
             <div className="font-black text-2xl md:text-4xl">
@@ -70,8 +72,10 @@ export default function Home() {
               protocol's smart contract? Do you need a meme master? Maybe
               someone to send retweets? Make tutorials? Write blogs?
             </div>
-            <Button buttonData={lookingData} />
-          </div>
+            {/* <Button buttonData={lookingData} /> */}
+            {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+              <a className="button form" href="https://blocksurvey.io/survey/t/c03d889a-1b33-49aa-86a0-3a1da3a0475d" target="_blank" rel="noreferrer">Looking for a Service</a><blocksurvey-widget origin="blocksurvey.io" uid="t" sid="c03d889a-1b33-49aa-86a0-3a1da3a0475d" mode="popupcard" alignpopup="right" popupsize="slide" background="rgb(229, 96, 115)" color="rgb(255, 255, 255)" params=""></blocksurvey-widget><script type="text/javascript" src= "https://blocksurvey.io/assets/js/blocksurvey-widget.js"></script>
+            </div>
         </div>
       </div>
       <Footer />

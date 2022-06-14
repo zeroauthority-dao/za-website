@@ -7,32 +7,39 @@ const ResultCard = ({ serviceId }) => {
   const [creators, setCreators] = useState([]);
 
   useEffect(() => {
+    console.log("here")
     getCreators();
   }, []);
 
   const getCreators = async () => {
-    let { data: service_offerings, error } = await supabase
-      .from("service_offerings")
-      .select(
-        `
-            profiles (
-                id,
-                username,
-                avatar_url,
-                discord,
-                twitter,
-                description
-            )
-        `
-      )
-      .eq("service_id", serviceId);
-    setCreators(service_offerings);
+    // let { data: service_offerings, error } = await supabase
+    // .from("service_offerings")
+    // .select(
+    //   `
+    //       profiles (
+    //           id,
+    //           username,
+    //           avatar_url,
+    //           discord,
+    //           twitter,
+    //           description
+    //       )
+    //   `
+    // )
+    // .eq("service_id", serviceId);
+    // setCreators(service_offerings);
+    let { data: profiles, error } = await supabase
+      .from("profiles")
+      .select("username, avatar_url, discord, twitter, description")
+      
+    setCreators(profiles);
   };
-
-  const card = creators.map(({ profiles }, i) => {
+  console.log(creators)
+  const card = creators.map(( profiles , i) => {
+    console.log(profiles)
     return (
       <div key={i} className="grid bg-[#F8FAFC] rounded-sm">
-        <div className="grid grid-rows-3 px-8 py-2">
+        <div className="grid grid-rows-3 px-8 py-4">
           <div className="grid grid-cols-3 gap-8 place-items-center">
             <div>
               <Image
@@ -45,11 +52,11 @@ const ResultCard = ({ serviceId }) => {
             </div>
             <div className="grid font-semibold text-3xl ml-8">
               {profiles.username}
-              {/* <span className="text-base">⭐&nbsp;&nbsp;{data.rating}</span> */}
+              {/* <span className="text-base">⭐&nbsp;&nbsp;{profiles.rating}</span> */}
             </div>
           </div>
-          <div className="text-lg">{profiles.description}</div>
-          <div className="grid place-items-start">
+          <div className="text-lg text-center py-2">{profiles.description}</div>
+          <div className="grid place-items-center gap-4 whitespace-nowrap">
             {profiles.twitter.length > 0 ? (
               <p>Discord Handle: {profiles.discord}</p>
             ) : (

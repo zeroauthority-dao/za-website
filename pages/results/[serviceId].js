@@ -7,14 +7,19 @@ import ServiceList from "../components/ServiceList";
 const Results = () => {
   const router = useRouter();
   const { serviceId } = router.query;
+  console.log(serviceId)
   return (
-    <div className="font-inter antialiased bg-[#E5E5E5]">
+    <div className="font-inter antialiased bg-[#E5E5E5] h-screen">
       <SecondaryNav />
       <div className="px-24">
-        <ServiceList />
+        <ServiceList
+          results={true}
+        />
       </div>
       <ResultCard serviceId={serviceId} />
-      <Footer />
+      <div className="fixed inset-x-0 bottom-0">
+        <Footer />
+      </div>
     </div>
   );
 };

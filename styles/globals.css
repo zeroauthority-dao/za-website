@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwindcss forms;
+
+.form {
+  display:inline-block;
+  text-decoration:none;
+  cursor:pointer;
+  font-family:
+  Helvetica,Arial,sans-serif;
+  font-size:18px;
+  text-align:center;
+  margin:0;
+  padding:12px 24px;
+  max-width:100%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-weight:bold;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  border-radius:4px;
+  background-color:rgb(229, 96, 115);
+  color:rgb(255, 255, 255);
+}
