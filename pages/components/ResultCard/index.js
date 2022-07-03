@@ -1,71 +1,63 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Button from "../Button";
 import { supabase } from "../../../utils/supabaseClient";
 
 const ResultCard = ({ serviceId }) => {
   const [creators, setCreators] = useState([]);
 
   useEffect(() => {
-    console.log("here")
     getCreators();
   }, []);
 
   const getCreators = async () => {
-    // let { data: service_offerings, error } = await supabase
-    // .from("service_offerings")
-    // .select(
-    //   `
-    //       profiles (
-    //           id,
-    //           username,
-    //           avatar_url,
-    //           discord,
-    //           twitter,
-    //           description
-    //       )
-    //   `
-    // )
-    // .eq("service_id", serviceId);
-    // setCreators(service_offerings);
-    let { data: profiles, error } = await supabase
-      .from("profiles")
-      .select("username, avatar_url, discord, twitter, description")
-      
-    setCreators(profiles);
+    let { data: profiles, error } = await supabase.from("profiles").select(
+      `
+        *,
+        service_offerings (
+            service_id
+        )
+      `
+    );
+    const filteredProfiles = profiles.filter((profile) => {
+      return (
+        profile.service_offerings.filter((service) => {
+          return service.service_id.toString() === serviceId.toString();
+        }).length > 0
+      );
+    });
+    setCreators(filteredProfiles);
   };
-  console.log(creators)
-  const card = creators.map(( profiles , i) => {
-    console.log(profiles)
+
+  const card = creators.map((profile, i) => {
     return (
       <div key={i} className="grid bg-[#F8FAFC] rounded-sm">
         <div className="grid grid-rows-3 px-8 py-4">
           <div className="grid grid-cols-3 gap-8 place-items-center">
             <div>
               <Image
-                src={`https://tthqvxhzvyfntjewmwkf.supabase.co/storage/v1/object/sign/avatars/${profiles.avatar_url}?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzLzAuMjA2OTc0ODczOTE5NTcyMDMuanBnIiwiaWF0IjoxNjUwNzA2NzIyLCJleHAiOjE5NjYwNjY3MjJ9.eEn8pwJ3rUR4lAAUkcPLXvKZFg6xTmoNGuTnORMWXR8`}
-                alt={profiles.username}
+                src={`https://tthqvxhzvyfntjewmwkf.supabase.co/storage/v1/object/sign/avatars/${profile.avatar_url}?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzLzAuMjA2OTc0ODczOTE5NTcyMDMuanBnIiwiaWF0IjoxNjUwNzA2NzIyLCJleHAiOjE5NjYwNjY3MjJ9.eEn8pwJ3rUR4lAAUkcPLXvKZFg6xTmoNGuTnORMWXR8`}
+                alt={profile.username}
                 height="70px"
                 width="70px"
                 className="rounded-full"
               />
             </div>
             <div className="grid font-semibold text-3xl ml-8">
-              {profiles.username}
-              {/* <span className="text-base">⭐&nbsp;&nbsp;{profiles.rating}</span> */}
+              {profile.username}
+              {/* <span className="text-base">⭐&nbsp;&nbsp;{profile.rating}</span> */}
             </div>
           </div>
-          <div className="text-lg text-center py-2">{profiles.description}</div>
+          <div className="text-lg text-center py-2">{profile.description}</div>
           <div className="grid place-items-center gap-4 whitespace-nowrap">
-            {profiles.twitter.length > 0 ? (
-              <p>Discord Handle: {profiles.discord}</p>
+            {profile.twitter.length > 0 ? (
+              <p>Discord Handle: {profile.discord}</p>
             ) : (
               ""
             )}
-            {profiles.twitter.length > 0 ? (
+            {profile.twitter.length > 0 ? (
               <a
                 className="rounded-full bg-primary px-4 py-2 text-white"
-                href={`https://twitter.com/${profiles.twitter}`}
+                href={`https://twitter.com/${profile.twitter}`}
               >
                 View Twitter
               </a>
