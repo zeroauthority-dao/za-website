@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <div className="text-white leading-7 text-2xl mt-10 md:mt-10">
             <p>
-              Zero Authority is a comunity of people who believe in open source
+              Zero Authority is a community of people who believe in open source
               and permissionless systems built on Stacks and secured by Bitcoin.
             </p>
             <p className="mt-4">What are you looking for?</p>
