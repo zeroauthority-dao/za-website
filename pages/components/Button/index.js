@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const Button = ({ buttonData }) => {
+const Button = ({ buttonData = { path: "", text: "" } }) => {
   const router = useRouter();
 
   return (
     <button
-      onClick={() => router.push(`${buttonData.path}`)}
+      onClick={() => router.push(buttonData.path)}
       className="mt-6 w-full max-w-content"
     >
       <div className="grid md:grid-cols-2 px-6 py-2 rounded-full bg-[#14B8A6] text-white">
