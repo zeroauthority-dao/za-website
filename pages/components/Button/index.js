@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 import { useRouter } from "next/router";
 
 const Button = ({ buttonData = { path: "", text: "" } }) => {

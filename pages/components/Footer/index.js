@@ -1,11 +1,11 @@
 
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 
 const Footer = () => {
 
   return (
-    <div className="grid place-items-center pt-40 pb-4 antialiased font-semibold">
+    <div className="grid place-items-center pt-24 lg:pt-40 pb-4 antialiased font-semibold">
       <div className="flex flex-cols gap-12">
         <Link href="https://discord.gg/bANtPU5gss">
           <a

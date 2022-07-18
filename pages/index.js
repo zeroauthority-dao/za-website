@@ -48,8 +48,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center font-inter py-52 px-2 antialiased">
-        <div className="grid grid-cols-2 gap-8 md:gap-20 max-w-content">
+      <div className="flex justify-center font-inter py-24 lg:py-52 px-2 antialiased">
+        <div className="grid gap-32 text-center lg:text-left lg:grid-cols-2 md:gap-20 max-w-content">
           <div className="grid grid-rows-3 md:gap-8">
             <div className="font-black text-2xl md:text-4xl">
               Do you have a service to offer?
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
             <div className="text-xl md:text-2xl row-span-2">
               Are you looking for a talented individual to review your
-              protocol&pos;s smart contract? Do you need a meme master? Maybe
+              protocol&apos;s smart contract? Do you need a meme master? Maybe
               someone to send retweets? Make tutorials? Write blogs?
             </div>
             <Button buttonData={lookingData} />
