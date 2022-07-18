@@ -15,9 +15,7 @@ const Results = () => {
           <ServiceList results={true} />
         </div>
         <ResultCard serviceId={serviceId} />
-        <div className="fixed inset-x-0 bottom-0">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     )
   );
